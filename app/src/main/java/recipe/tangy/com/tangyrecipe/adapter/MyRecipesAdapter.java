@@ -2,38 +2,27 @@ package recipe.tangy.com.tangyrecipe.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.AsyncTask;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v7.widget.RecyclerView;
-import android.text.Html;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.request.target.BitmapImageViewTarget;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import recipe.tangy.com.tangyrecipe.MainActivity;
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
-import recipe.tangy.com.tangyrecipe.Utilities.GetString;
+
 
 /**
  * Created by android on 13/11/17.
@@ -63,10 +52,15 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
         final MyViewHolder mHolder = (MyViewHolder) holder;
         HashMap<String, Object> hash = alRecipes.get(position);
         String id = (String) hash.get("Id");
+        String image = (String) hash.get("Image");
         final String description = (String) hash.get("description");
         final String title = (String) hash.get("title");
         mHolder.textView.setText((title));
-        mHolder.imageview.setImageBitmap(GetString.getDrawable(id, ctx));
+        Glide.with(ctx).load("file:///android_asset/image/"+image)
+                .thumbnail(0.5f)
+                .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(mHolder.imageview);
         mHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,9 +72,7 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
                 window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
                 window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
                 WebView web = (WebView) dialog.findViewById(R.id.webview);
-               // web.loadDataWithBaseURL("file:///android_asset/", GetString.getRecContent(description), "text/html", "utf-8", null);
-                web.loadUrl(GetString.getRecContent(description));
-
+                web.loadUrl("file:///android_asset/htmlfile/" + description + ".html");
                 ImageButton imbutn = (ImageButton) dialog.findViewById(R.id.ib_close);
                 imbutn.setOnClickListener(new View.OnClickListener() {
                     @Override
