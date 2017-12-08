@@ -1,20 +1,13 @@
 package recipe.tangy.com.tangyrecipe;
 
+import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -25,10 +18,10 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     MyRecipesAdapter adapter;
     ArrayList<HashMap<String, Object>> alRecipes;
-    String title, description, Id;
     DatabaseHelper dbHelper;
-    byte[] image;
+    Intent intent;
 
+    String cat_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,22 +35,23 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MyRecipesAdapter(MainActivity.this, alRecipes);
         recyclerView.setAdapter(adapter);
         dbHelper = new DatabaseHelper(this);
-        try {
-            dbHelper.createDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        cat_id = getIntent().getStringExtra("cat_id");
+        String title, description, Id, Image, CategoryId;
 
-        Cursor c = dbHelper.getAllNames();
+        Cursor c = dbHelper.getRecipieListAccToCategory(cat_id);
         HashMap<String, Object> hash;
         while (c.moveToNext()) {
             title = c.getString(1);
             description = c.getString(2);
             Id = c.getString(0);
+            Image = c.getString(3);
+            CategoryId = c.getString(4);
             hash = new HashMap<String, Object>();
             hash.put("Id", Id);
             hash.put("title", title);
             hash.put("description", description);
+            hash.put("Image", Image);
+            hash.put("CategoryId", CategoryId);
             alRecipes.add(hash);
         }
 

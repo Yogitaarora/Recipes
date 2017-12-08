@@ -131,7 +131,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return c;
     }
 
+    public Cursor getAllCategoryNames() {
+        String myPath = DATABASE_PATH + DATABASE_NAME;
+        db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        Cursor c = db.rawQuery("SELECT * FROM Categories", null);
+        return c;
+    }
 
+    public Cursor getRecipieListAccToCategory(String cat_id) {
+        String myPath = DATABASE_PATH + DATABASE_NAME;
+        db = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+        Cursor c = db.rawQuery("SELECT * FROM Recipes_Name JOIN Categories on Categories.cat_id=Recipes_Name.CategoryId WHERE Categories.cat_id = " + cat_id, null);
+        return c;
+    }
 }
 
 
