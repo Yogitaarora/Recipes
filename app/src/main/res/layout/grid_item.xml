@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp"
+    android:layout_margin="15dp"
     android:orientation="horizontal">
 
 
     <LinearLayout
         android:id="@+id/llCatBg"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:gravity="center"
+        android:layout_height="200dp"
+        android:gravity="bottom"
         android:orientation="vertical">
 
         <ImageView
@@ -22,9 +22,10 @@
 
         <TextView
             android:id="@+id/tvCatName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#000"
+            android:background="@drawable/red"
+            android:gravity="center_horizontal"
             android:padding="5dp"
             android:text="gfhgf"
             android:textColor="@color/colorWhite"

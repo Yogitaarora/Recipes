@@ -58,5 +58,7 @@
 <li style="font-weight: 400;"></li>
 </ul>
 <p></p></string>
+    <string name="navigation_drawer_open">22</string>
+    <string name="navigation_drawer_close">22</string>
 
 </resources>

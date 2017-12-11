@@ -3,20 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/splash"
-
+    android:background="@drawable/settings_about_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="recipe.tangy.com.tangyrecipe.SplashScreen">
 
-    <TextView
+    <ImageView
         android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:layout_marginTop="200dp"
-        android:text="Tangy"
-        android:textColor="@color/colorGreen"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="70dp"
+        android:src="@mipmap/ic_launcher"
+        android:scaleType="fitXY"
         android:textSize="70dp"
         android:textStyle="bold"
 
         />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Tangy"
+        android:textColor="@color/colorWhite"
+        android:textSize="70dp"
+        android:textStyle="bold"
+
+        />
+
 </LinearLayout>

@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -56,12 +57,12 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
         final String description = (String) hash.get("description");
         final String title = (String) hash.get("title");
         mHolder.textView.setText((title));
-        Glide.with(ctx).load("file:///android_asset/image/"+image)
+        Glide.with(ctx).load("file:///android_asset/image/" + image)
                 .thumbnail(0.5f)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(mHolder.imageview);
-        mHolder.textView.setOnClickListener(new View.OnClickListener() {
+        mHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Dialog dialog = new Dialog(ctx, R.style.AppTheme_NoActionBar);
@@ -94,12 +95,14 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ImageView imageview;
+        LinearLayout layout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.textView);
+            textView = (TextView) itemView.findViewById(R.id.textview);
             imageview = (ImageView) itemView.findViewById(R.id.imageview);
 
+            layout = (LinearLayout) itemView.findViewById(R.id.layout);
         }
     }
 

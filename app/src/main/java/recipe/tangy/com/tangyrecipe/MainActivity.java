@@ -2,11 +2,25 @@ package recipe.tangy.com.tangyrecipe;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,9 +33,9 @@ public class MainActivity extends AppCompatActivity {
     MyRecipesAdapter adapter;
     ArrayList<HashMap<String, Object>> alRecipes;
     DatabaseHelper dbHelper;
-    Intent intent;
-
+    TextView tvTitle;
     String cat_id;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +43,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         alRecipes = new ArrayList<HashMap<String, Object>>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        tvTitle = (TextView) findViewById(R.id.tvTitle);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        tvTitle.setText("Items");
         LinearLayoutManager layoutManager = new LinearLayoutManager(MainActivity.this, LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new MyRecipesAdapter(MainActivity.this, alRecipes);
         recyclerView.setAdapter(adapter);
+
         dbHelper = new DatabaseHelper(this);
         cat_id = getIntent().getStringExtra("cat_id");
         String title, description, Id, Image, CategoryId;
-
         Cursor c = dbHelper.getRecipieListAccToCategory(cat_id);
         HashMap<String, Object> hash;
         while (c.moveToNext()) {
@@ -56,5 +75,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
+
 
 }
