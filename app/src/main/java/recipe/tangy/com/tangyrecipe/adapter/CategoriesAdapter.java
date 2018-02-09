@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import recipe.tangy.com.tangyrecipe.CategoriesScreen;
-import recipe.tangy.com.tangyrecipe.MainActivity;
+import recipe.tangy.com.tangyrecipe.RecipeList;
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
 
@@ -50,7 +50,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter {
         final MyViewHolder mHolder = (MyViewHolder) holder;
         HashMap<String, String> hash = alRecipeCategories.get(position);
         final String id = (String) hash.get("cat_id");
-        String title = (String) hash.get("cat_title");
+        final String title = (String) hash.get("cat_title");
         String cat_image = (String) hash.get("cat_image");
         mHolder.tvCatName.setText(title);
         InputStream ims;
@@ -69,11 +69,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter {
         }
 
 
-        mHolder.tvCatName.setOnClickListener(new View.OnClickListener() {
+        mHolder.llCatBg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ctx, MainActivity.class);
+                Intent intent = new Intent(ctx, RecipeList.class);
                 intent.putExtra("cat_id", id);
+                intent.putExtra("cat_title", title);
                 ctx.startActivity(intent);
             }
         });

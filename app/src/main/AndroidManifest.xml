@@ -19,9 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CategoriesScreen" />
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity android:name=".RecipeList"></activity>
+        <activity android:name=".FeedBackActivity"></activity>
     </application>
 
 </manifest>

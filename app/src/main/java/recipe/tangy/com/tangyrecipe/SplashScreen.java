@@ -5,12 +5,16 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class SplashScreen extends AppCompatActivity {
+    LottieAnimationView lottieAnimationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
+        lottieAnimationView = (LottieAnimationView) findViewById(R.id.animation_view);
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -28,7 +32,7 @@ public class SplashScreen extends AppCompatActivity {
                 // close this activity
                 finish();
             }
-        }, 5000);
+        }, 3000);
     }
 }
 

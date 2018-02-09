@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="recipe.tangy.com.tangyrecipe.RecipeList">
-
+    tools:context="recipe.tangy.com.tangyrecipe.FeedBackActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,9 +36,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
                     android:gravity="center"
                     android:text="test"
-                    android:layout_marginRight="20dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
                     android:textSize="18dp"
@@ -51,17 +49,9 @@
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:descendantFocusability="blocksDescendants" />
-
     <TextView
-        android:id="@+id/tvNoResult"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="No Result Found."
-        android:visibility="gone" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Us Feedback"
+        android:textSize="14sp" />
 </LinearLayout>

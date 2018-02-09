@@ -2,6 +2,7 @@ package recipe.tangy.com.tangyrecipe.adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,17 +11,15 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import recipe.tangy.com.tangyrecipe.MainActivity;
+import recipe.tangy.com.tangyrecipe.RecipeList;
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
 
@@ -35,7 +34,7 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
     ArrayList<HashMap<String, Object>> alRecipes;
 
 
-    public MyRecipesAdapter(MainActivity mainActivity, ArrayList<HashMap<String, Object>> alRecipes) {
+    public MyRecipesAdapter(RecipeList mainActivity, ArrayList<HashMap<String, Object>> alRecipes) {
         this.ctx = mainActivity;
         dbHelper = new DatabaseHelper(ctx);
         this.alRecipes = alRecipes;
@@ -57,11 +56,18 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
         final String description = (String) hash.get("description");
         final String title = (String) hash.get("title");
         mHolder.textView.setText((title));
-        Glide.with(ctx).load("file:///android_asset/image/" + image)
-                .thumbnail(0.5f)
-                .crossFade()
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .into(mHolder.imageview);
+        InputStream ims;
+        Drawable d;
+        try {
+            // get input stream
+            ims = ctx.getAssets().open("image/" + image);
+            d = Drawable.createFromStream(ims, null);
+            // set image to ImageView
+            mHolder.layout.setBackgroundDrawable(d);
+            ims.close();
+        } catch (IOException ex) {
+            return;
+        }
         mHolder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,13 +100,13 @@ public class MyRecipesAdapter extends RecyclerView.Adapter {
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
-        ImageView imageview;
+
         LinearLayout layout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textview);
-            imageview = (ImageView) itemView.findViewById(R.id.imageview);
+
 
             layout = (LinearLayout) itemView.findViewById(R.id.layout);
         }

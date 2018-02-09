@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "189011467286",
+    "firebase_url": "https://tangy-d5e0b.firebaseio.com",
+    "project_id": "tangy-d5e0b",
+    "storage_bucket": "tangy-d5e0b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189011467286:android:a698592efc7dd35b",
+        "android_client_info": {
+          "package_name": "recipe.tangy.com.tangyrecipe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "189011467286-gjmh5tk88epcbbheoovhb49faa4fbso1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3sXj5Vr9py963pUnWnwOJi1h9TztSe1g"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

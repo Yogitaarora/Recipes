@@ -2,36 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="15dp"
+    android:layout_marginTop="15dp"
     android:background="@android:color/white"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:gravity="center"
+    android:orientation="vertical">
 
 
     <LinearLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:gravity="bottom"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imageview"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitXY"
-
-            />
 
         <TextView
             android:id="@+id/textview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/red"
-            android:gravity="center_horizontal"
             android:padding="5dp"
             android:text="gfhgf"
             android:textColor="@color/colorWhite"
             android:textSize="20dp"
-            android:textStyle="bold" />
+            android:textStyle="italic" />
     </LinearLayout>
+
 </LinearLayout>

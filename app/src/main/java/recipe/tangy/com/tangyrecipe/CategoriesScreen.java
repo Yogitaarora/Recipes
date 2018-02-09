@@ -1,5 +1,6 @@
 package recipe.tangy.com.tangyrecipe;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,10 +18,16 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,9 +52,10 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
     ListView lvNav;
     public NavigationAdapter navAdapter;
     Toolbar toolbar;
+    TextView tvTitle;
     AppBarLayout appbar;
     NavigationView navigationView;
-    TextView tvTitle;
+
 
 
     @Override
@@ -57,7 +65,6 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
         ButterKnife.bind(this);
         intViews();
         setUpNavigationAndToolbar();
-
         alRecipeCategories = new ArrayList<HashMap<String, String>>();
         categoryId = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.rvCategories);
@@ -71,6 +78,7 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
         } catch (IOException e) {
             e.printStackTrace();
         }
+
         String cat_title, cat_id, cat_image;
         Cursor c = dbHelper.getAllCategoryNames();
         HashMap<String, String> hash;
@@ -93,11 +101,11 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
     private void intViews() {
 
         lvNav = (ListView) findViewById(R.id.list);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         appbar = (AppBarLayout) findViewById(R.id.appbar);
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         tvTitle = (TextView) findViewById(R.id.tvTitle);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
 
     }
 
@@ -139,16 +147,36 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
         });
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        String[] menuItems = {"home", "test", "test3", "test4", "test4"};
+        String[] menuItems = {"home", "test", "FeedBack", "Share"};
         navAdapter = new NavigationAdapter(this, menuItems);
         lvNav.setAdapter(navAdapter);
         navigationView.setNavigationItemSelectedListener(CategoriesScreen.this);
+        lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position) {
+                    case 0:
 
+                        break;
+                    case 1:
 
+                        break;
+                    case 2:
+                        Intent intent=new Intent(CategoriesScreen.this,FeedBackActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        break;
+                }
+
+            }
+        });
     }
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
         return false;
     }
 
