@@ -18,9 +18,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CategoriesScreen" />
-        <activity android:name=".RecipeList"></activity>
-        <activity android:name=".FeedBackActivity"></activity>
+        <activity android:name=".MainScreen" />
+        <activity android:name=".RecipeList" />
+        <activity android:name=".FeedBackActivity" />
+        <activity android:name=".TipsActivity"></activity>
     </application>
 
 </manifest>

@@ -11,7 +11,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -19,87 +18,44 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.analytics.FirebaseAnalytics;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
 import recipe.tangy.com.tangyrecipe.adapter.CategoriesAdapter;
+import recipe.tangy.com.tangyrecipe.fragment.CategoriesFragment;
 
-public class CategoriesScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    DatabaseHelper dbHelper;
-    ArrayList<HashMap<String, String>> alRecipeCategories;
-    List<String> categoryId;
-    String cat;
-    RecyclerView recyclerView;
-    CategoriesAdapter adapter;
+
     public static DrawerLayout drawer;
     ActionBarDrawerToggle toggle;
     ListView lvNav;
-    public NavigationAdapter navAdapter;
+    public static NavigationAdapter navAdapter;
     Toolbar toolbar;
     TextView tvTitle;
     AppBarLayout appbar;
     NavigationView navigationView;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_categories_screen);
+        setContentView(R.layout.activity_main_screen);
         ButterKnife.bind(this);
         intViews();
         setUpNavigationAndToolbar();
-        alRecipeCategories = new ArrayList<HashMap<String, String>>();
-        categoryId = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.rvCategories);
-        int numberOfColumns = 2;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new CategoriesAdapter(this, alRecipeCategories);
-        recyclerView.setAdapter(adapter);
-        dbHelper = new DatabaseHelper(this);
-        try {
-            dbHelper.createDatabase();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CategoriesFragment()).commit();
 
-        String cat_title, cat_id, cat_image;
-        Cursor c = dbHelper.getAllCategoryNames();
-        HashMap<String, String> hash;
-        while (c.moveToNext()) {
-            cat_title = c.getString(1);
-            cat_id = c.getString(0);
-            cat_image = c.getString(2);
-            hash = new HashMap<String, String>();
-            hash.put("cat_id", cat_id);
-            hash.put("cat_title", cat_title);
-            hash.put("cat_image", cat_image);
-            categoryId.add(cat_id);
-            alRecipeCategories.add(hash);
-            cat = cat_id;
-
-
-        }
     }
 
     private void intViews() {
-
         lvNav = (ListView) findViewById(R.id.list);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         appbar = (AppBarLayout) findViewById(R.id.appbar);
@@ -147,30 +103,33 @@ public class CategoriesScreen extends AppCompatActivity implements NavigationVie
         });
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        String[] menuItems = {"home", "test", "FeedBack", "Share"};
+        String[] menuItems = {"home", "Tips", "FeedBack", "Share"};
         navAdapter = new NavigationAdapter(this, menuItems);
         lvNav.setAdapter(navAdapter);
-        navigationView.setNavigationItemSelectedListener(CategoriesScreen.this);
+        navigationView.setNavigationItemSelectedListener(MainScreen.this);
         lvNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new CategoriesFragment()).addToBackStack(null).commit();
                         break;
                     case 1:
-
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new TipsFragment()).addToBackStack(null).commit();
                         break;
                     case 2:
-                        Intent intent=new Intent(CategoriesScreen.this,FeedBackActivity.class);
-                        startActivity(intent);
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new MyFavoriteFragment()).addToBackStack(null).commit();
                         break;
                     case 3:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment, new FeedBackFragment()).addToBackStack(null).commit();
                         break;
                 }
+                drawer.closeDrawer(GravityCompat.START);
+
 
             }
         });
+
     }
 
 

@@ -3,6 +3,7 @@ package recipe.tangy.com.tangyrecipe.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import recipe.tangy.com.tangyrecipe.CategoriesScreen;
+import recipe.tangy.com.tangyrecipe.MainScreen;
 import recipe.tangy.com.tangyrecipe.RecipeList;
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
@@ -31,7 +32,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter {
     ArrayList<HashMap<String, String>> alRecipeCategories;
 
 
-    public CategoriesAdapter(CategoriesScreen mainActivity, ArrayList<HashMap<String, String>> alRecipeCategories) {
+    public CategoriesAdapter(FragmentActivity mainActivity, ArrayList<HashMap<String, String>> alRecipeCategories) {
         this.ctx = mainActivity;
         dbHelper = new DatabaseHelper(ctx);
         this.alRecipeCategories = alRecipeCategories;
