@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe.adapter;
+package recipe.tangy.com.tangyrecipe.activity.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -11,7 +11,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 
 /**
  * Created by android on 6/12/17.

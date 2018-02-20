@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="recipe.tangy.com.tangyrecipe.RecipeList">
+    tools:context="recipe.tangy.com.tangyrecipe.activity.RecipeList">
 
 
     <android.support.v7.widget.Toolbar
@@ -38,9 +37,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginRight="20dp"
                     android:gravity="center"
                     android:text="test"
-                    android:layout_marginRight="20dp"
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
                     android:textSize="18dp"
@@ -50,6 +49,46 @@
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:id="@+id/rllayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="10dp"
+        android:animateLayoutChanges="true"
+        android:background="@drawable/blackborder">
+
+        <EditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_search_product"
+            android:drawablePadding="6dp"
+            android:hint="@string/search"
+            android:inputType="textNoSuggestions"
+            android:padding="7dp"
+            android:singleLine="true"
+            android:textSize="13dp" />
+
+        <ImageView
+            android:id="@+id/ivCross"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="5dp"
+            android:src="@drawable/ic_cross"
+            android:tint="#cacaca"
+            android:visibility="gone"
+
+            />
+
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerView"

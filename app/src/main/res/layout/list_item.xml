@@ -2,45 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp"
-    android:layout_marginTop="15dp"
+    android:layout_margin="20dp"
     android:background="@android:color/white"
     android:gravity="center"
     android:orientation="vertical">
 
 
-    <LinearLayout
-        android:id="@+id/layout"
+    <ImageView
+        android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="200dp"
+
         android:gravity="bottom"
-        android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:paddingBottom="20dp"
-            android:paddingLeft="10dp"
-            android:visibility="gone"
-            android:paddingRight="20dp"
-            android:paddingTop="10dp"
-            android:src="@drawable/icon_like_active" />
+        android:scaleType="centerCrop" />
 
 
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/red"
-            android:padding="5dp"
-            android:text="gfhgf"
-            android:textColor="@color/colorWhite"
-            android:textSize="20dp"
-            android:textStyle="italic" />
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/red"
+        android:padding="5dp"
+        android:text="gfhgf"
+        android:textColor="@color/colorWhite"
+        android:textSize="20dp"
+        android:textStyle="italic" />
 
-
-    </LinearLayout>
 
 </LinearLayout>

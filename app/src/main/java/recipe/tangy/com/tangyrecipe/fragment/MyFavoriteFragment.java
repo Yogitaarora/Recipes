@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe;
+package recipe.tangy.com.tangyrecipe.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import recipe.tangy.com.tangyrecipe.R;
 
 /**
  * Created by android on 16/2/18.

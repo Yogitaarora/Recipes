@@ -1,7 +1,5 @@
-package recipe.tangy.com.tangyrecipe;
+package recipe.tangy.com.tangyrecipe.activity;
 
-import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,8 +9,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -22,15 +18,13 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
 import butterknife.ButterKnife;
-import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
-import recipe.tangy.com.tangyrecipe.adapter.CategoriesAdapter;
+import recipe.tangy.com.tangyrecipe.R;
+import recipe.tangy.com.tangyrecipe.activity.adapter.NavigationAdapter;
 import recipe.tangy.com.tangyrecipe.fragment.CategoriesFragment;
+import recipe.tangy.com.tangyrecipe.fragment.FeedBackFragment;
+import recipe.tangy.com.tangyrecipe.fragment.MyFavoriteFragment;
+import recipe.tangy.com.tangyrecipe.fragment.TipsFragment;
 
 public class MainScreen extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

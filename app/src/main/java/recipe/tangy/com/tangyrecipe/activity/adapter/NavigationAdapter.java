@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe;
+package recipe.tangy.com.tangyrecipe.activity.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import recipe.tangy.com.tangyrecipe.R;
 
 
 /**

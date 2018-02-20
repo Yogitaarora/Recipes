@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe.adapter;
+package recipe.tangy.com.tangyrecipe.activity.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;

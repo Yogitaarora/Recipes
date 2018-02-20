@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe.adapter;
+package recipe.tangy.com.tangyrecipe.activity.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,8 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import recipe.tangy.com.tangyrecipe.MainScreen;
-import recipe.tangy.com.tangyrecipe.RecipeList;
+import recipe.tangy.com.tangyrecipe.activity.RecipeList;
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
 
@@ -97,7 +96,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter {
             super(itemView);
             tvCatName = (TextView) itemView.findViewById(R.id.tvCatName);
             llCatBg = (LinearLayout) itemView.findViewById(R.id.llCatBg);
-            ivCatBg = (ImageView) itemView.findViewById(R.id.ivCatBg);
+
 
         }
     }

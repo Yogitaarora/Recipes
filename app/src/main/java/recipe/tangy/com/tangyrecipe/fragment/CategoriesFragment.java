@@ -17,7 +17,7 @@ import java.util.List;
 
 import recipe.tangy.com.tangyrecipe.R;
 import recipe.tangy.com.tangyrecipe.Utilities.DatabaseHelper;
-import recipe.tangy.com.tangyrecipe.adapter.CategoriesAdapter;
+import recipe.tangy.com.tangyrecipe.activity.adapter.CategoriesAdapter;
 
 /**
  * Created by android on 13/2/18.

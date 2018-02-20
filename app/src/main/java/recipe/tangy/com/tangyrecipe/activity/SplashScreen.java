@@ -1,4 +1,4 @@
-package recipe.tangy.com.tangyrecipe;
+package recipe.tangy.com.tangyrecipe.activity;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.airbnb.lottie.LottieAnimationView;
+
+import recipe.tangy.com.tangyrecipe.R;
 
 public class SplashScreen extends AppCompatActivity {
     LottieAnimationView lottieAnimationView;

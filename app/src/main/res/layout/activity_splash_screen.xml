@@ -6,7 +6,7 @@
     android:background="@drawable/settings_about_background"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context="recipe.tangy.com.tangyrecipe.SplashScreen">
+    tools:context="recipe.tangy.com.tangyrecipe.activity.SplashScreen">
 
     <ImageView
         android:id="@+id/imageView"
